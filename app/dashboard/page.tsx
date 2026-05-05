@@ -14,12 +14,12 @@ import { useRobot } from "@/context/RobotContext";
 import { useTheme } from "next-themes";
 
 const SENSOR_LABELS: Record<string, { id: string; label: string }> = {
-  sensor_1: { id: "US-1", label: "Front" },
-  sensor_2: { id: "US-2", label: "Front-Right" },
-  sensor_3: { id: "US-3", label: "Right" },
-  sensor_4: { id: "US-4", label: "Rear" },
-  sensor_5: { id: "US-5", label: "Left" },
-  sensor_6: { id: "US-6", label: "Front-Left" },
+  sensor_1: { id: "US-1", label: "Depan" },
+  sensor_2: { id: "US-2", label: "Kanan Depan" },
+  sensor_3: { id: "US-3", label: "Kanan Belakang" },
+  sensor_4: { id: "US-4", label: "Belakang" },
+  sensor_5: { id: "US-5", label: "Kiri Belakang" },
+  sensor_6: { id: "US-6", label: "Kiri Depan" },
 };
 
 const MAX_CM = 200;
@@ -72,7 +72,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col transition-colors duration-300">
-      
+
       <header className="bg-card border-b border-border sticky top-0 z-50 shadow-sm transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -258,9 +258,9 @@ export default function DashboardPage() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               {[
-                { label: "X (M/S)", key: "x" },
-                { label: "Y (M/S)", key: "y" },
-                { label: "Ω (RAD/S)", key: "omega" },
+                { label: "X", key: "x" },
+                { label: "Y", key: "y" },
+                { label: "ω", key: "omega" },
               ].map(({ label, key }) => (
                 <div key={key} className="flex flex-col gap-1.5">
                   <Label className="text-xs font-semibold text-muted-foreground">{label}</Label>

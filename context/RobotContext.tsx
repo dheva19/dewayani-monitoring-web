@@ -42,7 +42,6 @@ export function RobotProvider({ children }: { children: ReactNode }) {
       setStatus("connecting");
       setIp(ipAddress);
 
-      // Gunakan port WebSocket Mosquitto (biasanya 9001)
       const brokerUrl = `ws://${ipAddress}:9001`;
       const client = mqtt.connect(brokerUrl, {
         reconnectPeriod: 5000,
