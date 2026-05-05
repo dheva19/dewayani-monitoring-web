@@ -11,6 +11,15 @@ type SensorData = {
     sensor_4: number;
     sensor_5: number;
     sensor_6: number;
+    sensor_7: number; // Tambahan untuk Gripper
+  };
+  tof: {
+    sensor_1: number;
+    sensor_2: number;
+    sensor_3: number;
+    sensor_4: number;
+    sensor_5: number;
+    sensor_6: number;
   };
   imu: {
     yaw: number;
@@ -19,6 +28,7 @@ type SensorData = {
   };
   timestamp: number;
 };
+
 
 type RobotContextType = {
   ip: string;
