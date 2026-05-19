@@ -1,42 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🕷️ Dewayani Monitoring Web
 
-## Getting Started
+Dewayani Monitoring Web adalah aplikasi *dashboard* berbasis **Next.js** yang berfungsi sebagai antarmuka pemantauan dan kontrol terpusat untuk **Robot Hexapod SAR Dewayani**. Melalui *dashboard* ini, operator dapat melihat *live feed* kamera, memantau telemetri dari 13 sensor jarak, mengecek orientasi spasial robot, serta mengirimkan perintah pergerakan (kinematika) secara *real-time*.
 
-First, run the development server:
+## 🚀 Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. 📹 Robot Vision (Live YOLO Feed)
+* Menampilkan *streaming* video langsung dari kamera robot.
+* Digunakan untuk pemantauan visual, siap diintegrasikan dengan deteksi objek (YOLO) untuk kebutuhan pencarian dan penyelamatan.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 📡 Monitoring Sensor Ultrasonic (7 Sensor Proximity)
+Memantau jarak halangan di sekitar robot secara *real-time* (dalam cm) melalui visualisasi grafik batang:
+* US-1 · Depan
+* US-2 · Kanan Depan
+* US-3 · Kanan Belakang
+* US-4 · Belakang
+* US-5 · Kiri Belakang
+* US-6 · Kiri Depan
+* US-7 · Gripper (Mendeteksi objek di jangkauan capit)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 📐 Sensor VL (6 Sensor Jarak Presisi)
+Membaca data tingkat presisi tinggi dari subsistem sensor inframerah/ToF pada rentang jarak 0–200:
+* VL-1 · Depan | VL-2 · Kanan Depan
+* VL-3 · Kanan Belakang | VL-4 · Belakang
+* VL-5 · Kiri Belakang | VL-6 · Kiri Depan
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. 🧭 Orientasi Spasial & Gyro (IMU & Artificial Horizon)
+* **Artificial Horizon:** Representasi grafis dinamis berbentuk indikator *attitude* untuk melihat kemiringan robot terhadap permukaan tanah.
+* **Telemetri Orientasi:** Menampilkan data **Yaw** (0.0°), **Pitch** (0.0°), dan **Roll** (0.0°) secara presisi dari sensor IMU.
 
-## Learn More
+### 5. 🕹️ Kirim Perintah (Velocity Command Panel)
+Panel kontrol (teleoperasi) untuk mengirimkan perintah kecepatan ke *controller* robot:
+* **X:** Translasi sumbu X (maju/mundur).
+* **Y:** Translasi sumbu Y (menyamping/kanan-kiri).
+* **ω (Omega):** Kecepatan sudut untuk rotasi/berputar di tempat.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Stack Teknologi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Framework:** Next.js
+* **Styling & UI:** Tailwind CSS, Shadcn/UI, Lucide Icons
+* **Komunikasi:** MQTT (WebSockets) / Jembatan komunikasi dari ROS 2
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📦 Cara Instalasi
 
-## Deploy on Vercel
+Pastikan sudah menginstal **Node.js** (versi 18+) dan *package manager* seperti npm, yarn, atau pnpm.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Kloning Repositori**
+   ```bash
+   git clone https://github.com/dewayanisar/dewayani-monitoring-web.git
+   cd dewayani-monitoring-web
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Instalasi Dependensi**
+   ```bash
+   npm install
+   # atau menggunakan pnpm/yarn
+   ```
 
-## Deploy cloudflare wrangler
+3. **Jalankan Development Server**
+   ```bash
+   npm run dev
+   ```
+   Buka [http://localhost:3000](http://localhost:3000) di browser untuk mengakses *dashboard*.
 
-```
-wrangler pages deploy out
-```
+## 🤝 Kontribusi & Tim
+
+Sistem monitoring ini dikembangkan dan dikelola oleh sub-divisi software untuk mendukung operasional dan manuver hexapod. *Pull Request* untuk optimasi *dashboard*, perbaikan *bug*, atau penambahan fitur sangat diapresiasi.
